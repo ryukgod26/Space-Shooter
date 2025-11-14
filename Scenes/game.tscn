@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0mrwg5iuxpqp"]
+
+[ext_resource type="PackedScene" uid="uid://b5mb762co26tb" path="res://Scenes/player.tscn" id="1_ebmjs"]
+[ext_resource type="Texture2D" uid="uid://b0f0mq464tjb1" path="res://assets/SpaceShooter_Assets/starSmall.png" id="2_3dryh"]
+[ext_resource type="Texture2D" uid="uid://c30w6pc63ca3f" path="res://assets/SpaceShooter_Assets/backgroundColor.png" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://7vxlmswp1lr6" path="res://Scenes/meteor.tscn" id="4_3dryh"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(583, 322)
+scale = Vector2(7.7, 4.3133335)
+texture = ExtResource("3_wrm1d")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Background"]
+position = Vector2(4.7683716e-07, -73.26121)
+scale = Vector2(0.94285715, 1)
+amount = 50
+texture = ExtResource("2_3dryh")
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(80, 1)
+spread = 0.0
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+
+[node name="Player" parent="." instance=ExtResource("1_ebmjs")]
+position = Vector2(74, 83)
+
+[node name="Meteor" parent="." instance=ExtResource("4_3dryh")]
+position = Vector2(59, 22)

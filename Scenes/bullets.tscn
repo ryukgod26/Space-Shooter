@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://koxutqot2kjr"]
+
+[ext_resource type="Script" uid="uid://d2vdc62qfoe3q" path="res://Scripts/bullets.gd" id="1_r4o4n"]
+[ext_resource type="Texture2D" uid="uid://c7gf3e8rswgkj" path="res://assets/SpaceShooter_Assets/laserRed.png" id="1_umb5x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4o4n"]
+size = Vector2(9, 33)
+
+[node name="Bullets" type="Area2D"]
+collision_layer = 8
+collision_mask = 12
+script = ExtResource("1_r4o4n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_umb5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_r4o4n")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -1)
+rect = Rect2(-4, -16, 9, 34)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

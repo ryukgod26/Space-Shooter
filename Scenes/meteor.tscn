@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://7vxlmswp1lr6"]
+
+[ext_resource type="Script" uid="uid://d4b8msnxuw7fs" path="res://Scripts/meteor.gd" id="1_bgiwl"]
+[ext_resource type="Texture2D" uid="uid://cybm6or3pd60b" path="res://assets/Enviorment/Foozle_2DS0015_Void_EnvironmentPack/Foozle_2DS0015_Void_EnvironmentPack/Asteroids/PNGs/Asteroid 01 - Base.png" id="1_wm1ig"]
+
+[node name="Meteor" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_bgiwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wm1ig")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(1.9994017, -2.2706625)
+polygon = PackedVector2Array(-4.5013466, 7.0464015, -0.5001496, 7.0464015, 0, 6.1656013, 1.0002992, 6.1656013, 3.5010471, 4.4040008, 4.5013466, 3.9636009, 6.501945, 3.0828006, 8.502543, 1.3212003, 9.002693, 0, 9.002693, -1.3212003, 8.002394, -3.5232008, 5.0014963, -6.6060014, 3.0008976, -6.6060014, 2.5007482, -7.4868016, -3.0008976, -7.4868016, -3.5010471, -6.6060014, -5.5016456, -6.1656013, -9.002693, -3.9636009, -9.002693, -2.6424005, -9.502843, -2.6424005, -9.502843, 2.2020004, -9.002693, 3.5232008, -6.501945, 6.1656013, -5.0014963, 6.6060014)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-19, -16, 38, 34)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
