@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cybm6or3pd60b" path="res://assets/Enviorment/Foozle_2DS0015_Void_EnvironmentPack/Foozle_2DS0015_Void_EnvironmentPack/Asteroids/PNGs/Asteroid 01 - Base.png" id="1_wm1ig"]
 
 [node name="Meteor" type="Area2D"]
+scale = Vector2(3, 3)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_bgiwl")

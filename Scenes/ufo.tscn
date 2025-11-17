@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bk42oe1ljo72"]
+
+[ext_resource type="PackedScene" uid="uid://cp7bjwpvhis8c" path="res://Scenes/enemy.tscn" id="1_xosc4"]
+[ext_resource type="Texture2D" uid="uid://bvu1v2jvv3nj" path="res://assets/SpaceShooter_Assets/enemyUFO.png" id="2_3ue4y"]
+[ext_resource type="Script" uid="uid://db7nvj7r45nbh" path="res://Scripts/ufo.gd" id="2_ppr3x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ppr3x"]
+radius = 46.010868
+
+[node name="UFO" instance=ExtResource("1_xosc4")]
+script = ExtResource("2_ppr3x")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_3ue4y")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_ppr3x")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+rect = Rect2(-47, -46, 92, 91)

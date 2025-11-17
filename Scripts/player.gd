@@ -19,6 +19,7 @@ const SPEED = 100.0
 @onready var fire_delay_timer: Timer = $Timers/FireDelayTimer 
 @onready var invc_timer: Timer = $Timers/InvcTimer
 @onready var shield_sprite: Sprite2D = $Shield
+@onready var cam := %ShakeCam
 
 @export var fire_delay = 0.2 
 
@@ -62,6 +63,7 @@ func take_damage(amount: int):
 	invc_timer.start()
 	HP -= amount
 	print(HP) 
+	cam.shake(10)
 	if HP <=0:
 		queue_free()
 	change_plane_sprite()

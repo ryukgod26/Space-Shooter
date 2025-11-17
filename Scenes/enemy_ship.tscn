@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp8isbkq3qcrg"]
+
+[ext_resource type="PackedScene" uid="uid://cp7bjwpvhis8c" path="res://Scenes/enemy.tscn" id="1_tmwji"]
+[ext_resource type="Script" uid="uid://cyy2bdkdo5y0o" path="res://Scripts/enemy_ship.gd" id="2_fqvla"]
+[ext_resource type="Texture2D" uid="uid://gi5153paqab7" path="res://assets/SpaceShooter_Assets/enemyShip.png" id="3_38hgn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38hgn"]
+size = Vector2(49, 27)
+
+[node name="EnemyShip" instance=ExtResource("1_tmwji")]
+script = ExtResource("2_fqvla")
+SPEED = 3.0
+HP = 3
+DAMAGE = 1
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_38hgn")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_38hgn")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+rect = Rect2(-24, -13, 48, 27)
+
+[node name="LeftFiringPosition" parent="FiringPositions" index="0"]
+position = Vector2(-12, 12)
+
+[node name="RightFiringPosition" parent="FiringPositions" index="1"]
+position = Vector2(11, 11)
+
+[node name="FireTimer" type="Timer" parent="." index="4"]
+wait_time = 0.5
+one_shot = true

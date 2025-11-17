@@ -3,6 +3,7 @@ extends Control
 @onready var heart_container = $Hearts/MarginContainer/HBoxContainer
 
 var heart_scene = preload("res://Scenes/heart.tscn")
+var score: int = 0
 
 func setup(val: int) -> void:
 	print("val:",val)
@@ -29,3 +30,7 @@ func update_health(value: int,direction: int) -> void:
 		var gained_heart = heart_scene.instantiate()
 		heart_container.add_child(gained_heart)
 		gained_heart.change_alpha(1.0)
+
+func score_increment(amount: int):
+	score += amount
+	$Score.text = str(score).pad_zeros(3)

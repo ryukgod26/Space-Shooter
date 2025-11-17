@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://qwoygpmon111" path="res://Scripts/heart.gd" id="3_jgxw8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v4aiu"]
+resource_local_to_scene = true
 shader = ExtResource("1_v4aiu")
 shader_parameter/alpha = 1.0
 shader_parameter/progress = 0.0

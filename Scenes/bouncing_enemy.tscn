@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw1pkxanvs8gr"]
+
+[ext_resource type="PackedScene" uid="uid://cp8isbkq3qcrg" path="res://Scenes/enemy_ship.tscn" id="1_sgxvv"]
+[ext_resource type="Script" uid="uid://cfkydo4835gv0" path="res://Scripts/bouncing_enemy.gd" id="2_na3a6"]
+
+[node name="BouncingEnemy" instance=ExtResource("1_sgxvv")]
+script = ExtResource("2_na3a6")
+horizontal_speed = 90
+SPEED = 10.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0mrwg5iuxpqp"]
+[gd_scene load_steps=9 format=3 uid="uid://d0mrwg5iuxpqp"]
 
 [ext_resource type="PackedScene" uid="uid://b5mb762co26tb" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://bx447gwmx1kch" path="res://Scripts/level1.gd" id="1_wowpa"]
@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c30w6pc63ca3f" path="res://assets/SpaceShooter_Assets/backgroundColor.png" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://7vxlmswp1lr6" path="res://Scenes/meteor.tscn" id="4_3dryh"]
 [ext_resource type="PackedScene" uid="uid://dhemkulbonneo" path="res://Scenes/ui.tscn" id="6_i6g32"]
-[ext_resource type="PackedScene" uid="uid://cp7bjwpvhis8c" path="res://Scenes/enemy.tscn" id="7_1l0tm"]
+[ext_resource type="Script" uid="uid://b2yxdjfwsfl8q" path="res://Scripts/spawner.gd" id="7_1l0tm"]
+[ext_resource type="Script" uid="uid://bp3hg0t7kaxho" path="res://Scripts/shake_cam.gd" id="8_v158k"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_wowpa")
@@ -29,11 +30,6 @@ scale_amount_min = 0.1
 scale_amount_max = 0.5
 
 [node name="UI" parent="." instance=ExtResource("6_i6g32")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
 
 [node name="Meteor" parent="." instance=ExtResource("4_3dryh")]
 z_index = 1
@@ -41,12 +37,22 @@ position = Vector2(59, 22)
 
 [node name="Entities" type="Node2D" parent="."]
 
-[node name="Player" parent="Entities" groups=["Player"] instance=ExtResource("1_ebmjs")]
+[node name="Player" parent="Entities" instance=ExtResource("1_ebmjs")]
 unique_name_in_owner = true
 z_index = 2
 position = Vector2(538, 238)
 
-[node name="Enemy" parent="Entities" instance=ExtResource("7_1l0tm")]
-position = Vector2(306, 36)
+[node name="Spawner" type="Node2D" parent="Entities"]
+position = Vector2(581, -120)
+script = ExtResource("7_1l0tm")
+
+[node name="SpawnTimer" type="Timer" parent="Entities/Spawner"]
+one_shot = true
+
+[node name="ShakeCam" type="Camera2D" parent="."]
+unique_name_in_owner = true
+anchor_mode = 0
+script = ExtResource("8_v158k")
 
 [connection signal="upadte_ui" from="Entities/Player" to="." method="_on_player_upadte_ui"]
+[connection signal="timeout" from="Entities/Spawner/SpawnTimer" to="Entities/Spawner" method="_on_spawn_timer_timeout"]

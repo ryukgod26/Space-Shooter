@@ -7,8 +7,9 @@ extends Area2D
 @export var max_rotation_rate := 20.
 @export var hp := 10
 
-var meteor_effect_scene = preload("res://Scenes/meteor_effect.tscn")
+signal score(amount: int)
 
+var meteor_effect_scene = preload("res://Scenes/meteor_effect.tscn")
 var speed := 0.
 var rotation_rate := 0.
 
@@ -25,11 +26,14 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
 func take_damage(amount: int):
+	if hp <= 0:
+		return
 	hp -= amount
 	if hp <= 0:
 		var meteor_effect = meteor_effect_scene.instantiate()
 		meteor_effect.position = position
 		get_parent().add_child(meteor_effect)
+		score.emit(2)
 		queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
