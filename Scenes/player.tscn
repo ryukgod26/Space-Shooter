@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5mb762co26tb"]
+[gd_scene load_steps=11 format=3 uid="uid://b5mb762co26tb"]
 
 [ext_resource type="Script" uid="uid://c2k7j5sl711xb" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bg7hw7subtusy" path="res://assets/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Full health.png" id="1_v0iea"]
 [ext_resource type="Texture2D" uid="uid://n76syh1a4fi5" path="res://assets/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engines/PNGs/Main Ship - Engines - Base Engine.png" id="2_vgqql"]
 [ext_resource type="Texture2D" uid="uid://dlug52p1vjg58" path="res://assets/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engine Effects/PNGs/Main Ship - Engines - Base Engine - Idle.png" id="4_fkybt"]
+[ext_resource type="Texture2D" uid="uid://dwhjdbi15qjp1" path="res://assets/SpaceShooter_Assets/shield.png" id="5_fkybt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
 radius = 14.0
@@ -73,3 +74,14 @@ position = Vector2(14, 3)
 [node name="FireDelayTimer" type="Timer" parent="Timers"]
 wait_time = 0.1
 one_shot = true
+
+[node name="InvcTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
+one_shot = true
+
+[node name="Shield" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_fkybt")
+
+[connection signal="timeout" from="Timers/InvcTimer" to="." method="_on_invc_timer_timeout"]

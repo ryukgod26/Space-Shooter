@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxedl08q10qyy"
-path="res://.godot/imported/Main Ship - Base - Damaged.png-8b3eacf588bcc1a1eb2952802415e718.ctex"
+uid="uid://dstx104wd3w4g"
+path="res://.godot/imported/Fire-1-1-1.png-64a0cb72d8e028e19578e2d55de01deb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Bases/PNGs/Main Ship - Base - Damaged.png"
-dest_files=["res://.godot/imported/Main Ship - Base - Damaged.png-8b3eacf588bcc1a1eb2952802415e718.ctex"]
+source_file="res://assets/particle_effects/Particle_effects/Particle_effects/Fire-1-1-1.png"
+dest_files=["res://.godot/imported/Fire-1-1-1.png-64a0cb72d8e028e19578e2d55de01deb.ctex"]
 
 [params]
 

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://br845y28banmm"]
+
+[ext_resource type="Texture2D" uid="uid://duxtbnbvmbguc" path="res://assets/SpaceShooter_Assets/laserRedShot.png" id="1_umlsn"]
+[ext_resource type="Script" uid="uid://bjubtrmwsyhh8" path="res://Scripts/bullet_effect.gd" id="2_vehf3"]
+
+[node name="BulletEffect" type="Sprite2D"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_umlsn")
+script = ExtResource("2_vehf3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.15
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
