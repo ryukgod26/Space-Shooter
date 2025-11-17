@@ -6,4 +6,4 @@
 [node name="BouncingEnemy" instance=ExtResource("1_sgxvv")]
 script = ExtResource("2_na3a6")
 horizontal_speed = 90
-SPEED = 10.0
+SPEED = 25.0

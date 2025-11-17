@@ -9,3 +9,11 @@ func _ready() -> void:
 func _on_player_upadte_ui(hp: int, direction: int) -> void:
 	print("HP:",hp,"Direction:",direction)
 	ui.update_health(hp,direction)
+
+
+func _on_player_game_over() -> void:
+	$GameOver.visible = true
+
+
+func _on_restart_pressed() -> void:
+	get_tree().reload_current_scene()

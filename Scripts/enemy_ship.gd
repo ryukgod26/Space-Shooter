@@ -5,7 +5,7 @@ class_name Enemy_shooter
 
 func _ready() -> void:
 	HP = 15
-	SPEED = 25
+	SPEED = 30
 	score_value = 2
 	
 func _process(_delta: float) -> void:

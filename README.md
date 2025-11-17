@@ -6,3 +6,4 @@ It has some old game features like enemies shooting bullets,bouncing enemies sho
 It also have some Power Ups for Defense and Attack Boost.
 The Structure of the Project is very SImple and Alegant
 I will try to add more levels in the future.
+I have also added Game Over Screen Which Pops up when Player Dies

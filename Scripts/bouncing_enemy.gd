@@ -6,6 +6,7 @@ var horizontalDirection := 1
 
 func _ready() -> void:
 	score_value = 3
+	SPEED = 28
 
 func _physics_process(delta: float) -> void:
 	position.x += horizontal_speed * delta * horizontalDirection

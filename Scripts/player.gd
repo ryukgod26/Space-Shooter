@@ -20,10 +20,14 @@ const SPEED = 100.0
 @onready var invc_timer: Timer = $Timers/InvcTimer
 @onready var shield_sprite: Sprite2D = $Shield
 @onready var cam := %ShakeCam
+@onready var rapid_fire_timer: Timer = $Timers/RapidFireTimer
 
 @export var fire_delay = 0.2 
 
+var normal_fire_delay = fire_delay
+var rapid_fire_delay = 0.08
 signal upadte_ui(hp:int,direction:int)
+signal game_over
 
 var bullet_scene = preload("res://Scenes/bullets.tscn")
 var HP := 4:
@@ -60,17 +64,30 @@ func _physics_process(_delta: float) -> void:
 func take_damage(amount: int):
 	if not invc_timer.is_stopped():
 		return
-	invc_timer.start()
+	
 	HP -= amount
 	print(HP) 
+	apply_shield(2.0)
 	cam.shake(10)
 	if HP <=0:
+		game_over.emit()
 		queue_free()
 	change_plane_sprite()
-	shield_sprite.visible = true
 
 func change_plane_sprite():
 	plane_sprite.texture = load(plane_sprites[HP-1])
 
 func _on_invc_timer_timeout() -> void:
 	shield_sprite.visible = false
+
+func apply_shield(time: float) -> void:
+	invc_timer.start(time + invc_timer.time_left)
+	shield_sprite.visible = true
+
+func apply_rapid_fire(time: float):
+	fire_delay = rapid_fire_delay
+	rapid_fire_timer.start(time + rapid_fire_timer.time_left)
+
+
+func _on_rapid_fire_timer_timeout() -> void:
+	fire_delay = normal_fire_delay

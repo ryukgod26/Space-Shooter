@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dt7vfodknskpu"]
+
+[ext_resource type="PackedScene" uid="uid://b0ytwjwacd2s7" path="res://Scenes/powerup.tscn" id="1_vi76r"]
+[ext_resource type="Script" uid="uid://catckjtt1n0kc" path="res://Scripts/shield_power_up.gd" id="2_b4rnn"]
+[ext_resource type="Texture2D" uid="uid://b4gk50eit3dsd" path="res://assets/powerups/shieldpng.png" id="2_b53k1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b4rnn"]
+size = Vector2(24, 30)
+
+[node name="ShieldPowerUp" instance=ExtResource("1_vi76r")]
+script = ExtResource("2_b4rnn")
+shield_time = 6.0
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_b53k1")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_b4rnn")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+rect = Rect2(-13, -15, 26, 30)
